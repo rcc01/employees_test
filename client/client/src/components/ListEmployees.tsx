@@ -12,6 +12,11 @@ const ListEmployees = () => {
 
   const getData = async () => {
     const response = await axios.get(URL);
+    response.data.forEach((element: any) => {
+      if (element.hireDate !== "") {
+        element.hireDate = element.hireDate.slice(0, 10)
+      }
+    });
     return response;
   };
 
@@ -47,7 +52,7 @@ const ListEmployees = () => {
   // PUT!!!!!!!  - edit
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const response = await axios.put(`${URL}/${dataModal.id}`, dataModal);
+    const response = await axios.put(`${URL}`, dataModal);
     if (response.status === 200) {
       Swal.fire(
         "Saved!",

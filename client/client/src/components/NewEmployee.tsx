@@ -30,8 +30,6 @@ const NewEmployee = () => {
   //POST!!!!!!!!!!!!!!
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(data.hireDate);
-
     const response = await axios.post(URL, data);
     console.log(response);
     if (response.status === 200) {
